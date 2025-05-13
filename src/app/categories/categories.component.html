@@ -33,7 +33,7 @@
             class="btn btn-block btn-info mb-2 btn-theme"
             [disabled]="categoryForm.invalid"
           >
-            Add Category
+           {{formStatus}} Category
           </button>
         </div>
       </form>
@@ -53,6 +53,7 @@
           <tr *ngFor="let category of categoryArray; let i = index">
             <td>{{ i + 1 }}</td>
             <td>{{ category.data.category }}</td>
+            <td>
             <button
               class="btn btn-sm btn-warning"
               (click)="onEdit(category.data.category, category.id)"
@@ -63,6 +64,7 @@
               (click)="onDelete(category.id)"
             >Delete
           </button>
+          </td>
           </tr>
         </tbody>
       </table>

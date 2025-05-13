@@ -27,9 +27,15 @@ export class CategoriesService {
    })
   )
  }
+
+ updateData(id,EditData){
+  this.afs.doc(`categories/${id}`).update(EditData).then((docRef) => {
+    this.toastr.success('Data Update Successfully..!')
+  })
+ }
  deleteData(id){
-  this.afs.doc('categories/${id}').delete().then((docRef) => {
-    this.toastr.success('Data Delete...!');
+  this.afs.doc(`categories/${id}`).delete().then((docRef) => {
+    this.toastr.success('Data Delete Successfully..!');
   })
 }
 }

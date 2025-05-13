@@ -36,10 +36,16 @@ export class CategoriesComponent implements OnInit {
     console.log(formData.value);
     let categoryData: Category = {
       category: formData.value.category,
-      //status: true,
+      //status: 'active'
+    };
+    if(this.formStatus == 'Add'){
+      this.categoryService.saveData(categoryData);
+      formData.reset();
+    }else if(this.formStatus == 'Edit'){
+      this.categoryService.updateData(this.categoryId, categoryData);
+      formData.reset();
+      this.formStatus = 'Add';
     }
-    this.categoryService.saveData(categoryData);
-    formData.reset();
 
     let subCategoryData = {
       subCategory: 'subCategory1',
